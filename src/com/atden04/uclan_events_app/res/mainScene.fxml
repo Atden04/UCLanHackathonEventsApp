@@ -82,27 +82,7 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
       <children>
             <VBox fx:id="eventWindow" prefHeight="787.0" prefWidth="460.0">
-               <children>
-                  <HBox fx:id="eventBox" prefHeight="120.0" prefWidth="460.0">
-                     <children>
-                        <ImageView fx:id="eventImage" fitHeight="120.0" fitWidth="120.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="eventLabel" prefHeight="137.0" prefWidth="367.0" text="dfaf" textAlignment="CENTER">
-                           <font>
-                              <Font size="22.0" />
-                           </font>
-                           <opaqueInsets>
-                              <Insets />
-                           </opaqueInsets>
-                           <HBox.margin>
-                              <Insets />
-                           </HBox.margin>
-                           <padding>
-                              <Insets left="20.0" />
-                           </padding>
-                        </Label>
-                     </children>
-                  </HBox>
-               </children></VBox>
+            </VBox>
       </children>
     </AnchorPane>
   </children>

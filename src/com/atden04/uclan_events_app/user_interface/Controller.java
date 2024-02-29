@@ -19,12 +19,12 @@ public class Controller {
 
     @FXML
     private VBox eventWindow;
-    @FXML
+    /*@FXML
     private HBox eventBox;
     @FXML
     private Label eventLabel;
     @FXML
-    private ImageView eventImage;
+    private ImageView eventImage;*/
     Model model;
     Stage stage;
 
@@ -52,7 +52,7 @@ public class Controller {
             eventLabel.minHeight(137);
             eventLabel.minHeight(367);
             eventLabel.setTextAlignment(TextAlignment.CENTER);
-            eventLabel.setAlignment(Pos.BOTTOM_LEFT);
+            eventLabel.setAlignment(Pos.CENTER);
             eventLabel.setFont(new Font(22));
             eventLabel.setPadding(new Insets(0,0,0,20));
             eventContainer.getChildren().addAll(eventImage, eventLabel);
