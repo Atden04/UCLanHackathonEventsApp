@@ -1,11 +1,15 @@
 package com.atden04.uclan_events_app.models;
 
 import javafx.collections.ObservableList;
+import javafx.util.converter.LocalDateStringConverter;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 
 public class EventParser {
     /**
@@ -18,7 +22,11 @@ public class EventParser {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-                events.addLast(new Event(values[0], values[1], values[2]));
+
+                LocalDateStringConverter converter = new LocalDateStringConverter();
+                LocalDate date = converter.fromString(values[2]);
+
+                events.addLast(new Event(values[0], values[1], date));
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);

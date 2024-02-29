@@ -35,7 +35,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox prefHeight="812.0" prefWidth="375.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.atden04.uclan_events_app.user_interface.Controller">
+<VBox prefHeight="812.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.atden04.uclan_events_app.user_interface.Controller">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -76,9 +76,9 @@
         </Menu>
       </menus>
     </MenuBar>
-      <ScrollPane hbarPolicy="NEVER" prefHeight="793.0" prefWidth="375.0" vbarPolicy="ALWAYS">
+      <ScrollPane hbarPolicy="NEVER" prefHeight="793.0" prefWidth="425.0" vbarPolicy="ALWAYS">
          <content>
-            <VBox fx:id="eventWindow" prefHeight="785.0" prefWidth="353.0" />
+            <VBox fx:id="eventWindow" prefHeight="785.0" prefWidth="400.0" />
          </content></ScrollPane>
   </children>
 </VBox>
