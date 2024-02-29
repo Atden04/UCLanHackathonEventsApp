@@ -12,10 +12,10 @@ public class ResourceManager {
         return url;
     }
 
-    public static URL getImageUrl(String imagePath) {
-        var url = ResourceManager.class.getResource(imagePath);
+    public static URL getCsv(String name) {
+        var url = ResourceManager.class.getResource(name);
         if(url == null) {
-            throw new RuntimeException("Resource not found: "+imagePath);
+            throw new RuntimeException("Resource not found: "+name);
         }
         return url;
     }

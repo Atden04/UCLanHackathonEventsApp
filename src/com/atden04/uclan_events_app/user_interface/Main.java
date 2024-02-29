@@ -1,5 +1,6 @@
 package com.atden04.uclan_events_app.user_interface;
 
+import com.atden04.uclan_events_app.models.EventParser;
 import com.atden04.uclan_events_app.res.ResourceManager;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -13,11 +14,13 @@ public class Main extends Application {
 
     Model model;
     Controller controller;
+    EventParser parser;
 
     @Override
     public void start(Stage stage) throws Exception {
         //Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
 
+        this.parser = new EventParser();
         this.model = new Model();
         this.controller = new Controller();
 
@@ -29,7 +32,7 @@ public class Main extends Application {
         scene.getStylesheets().add(ResourceManager.getCss("style.css").toExternalForm());
 
         this.controller.initialise(this.model, stage);
-        this.model.initialise(this.controller);
+        this.model.initialise(this.controller,this.parser);
 
         stage.setTitle("UCLan Events");
         stage.setScene(scene);

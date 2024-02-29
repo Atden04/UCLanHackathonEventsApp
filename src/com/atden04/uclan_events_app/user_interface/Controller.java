@@ -48,14 +48,19 @@ public class Controller {
             eventImage.setFitWidth(120);
             Image image = new Image(e.getImagePath());
             eventImage.setImage(image);
-            Label eventLabel = new Label(e.getName());
-            eventLabel.minHeight(137);
-            eventLabel.minHeight(367);
-            eventLabel.setTextAlignment(TextAlignment.CENTER);
-            eventLabel.setAlignment(Pos.CENTER);
-            eventLabel.setFont(new Font(22));
-            eventLabel.setPadding(new Insets(0,0,0,20));
-            eventContainer.getChildren().addAll(eventImage, eventLabel);
+            Label eventNameLabel = new Label(e.getName());
+            eventNameLabel.minHeight(137);
+            eventNameLabel.minHeight(367);
+            eventNameLabel.setTextAlignment(TextAlignment.CENTER);
+            eventNameLabel.setAlignment(Pos.CENTER);
+            eventNameLabel.setFont(new Font(18));
+            eventNameLabel.setPadding(new Insets(5,0,0,20));
+            Label eventDateLabel = new Label(e.getDate().toString());
+            eventDateLabel.setFont(new Font(15));
+            eventDateLabel.setPadding(new Insets(5,0,0,25));
+            VBox eventInfoBox= new VBox(eventNameLabel, eventDateLabel);
+            System.out.println(e.getDate().toString());
+            eventContainer.getChildren().addAll(eventImage, eventInfoBox);
             eventWindow.getChildren().addLast(eventContainer);
         }
 
