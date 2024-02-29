@@ -3,11 +3,13 @@ package com.atden04.uclan_events_app.models;
 public class Event {
     private String name;
     private String imagePath;
+    private String date;
 
-    public Event(String name, String image)
+    public Event(String name, String image, String date)
     {
         this.name = name;
         this.imagePath = image;
+        this.date = date;
     }
 
     public String getName() {
