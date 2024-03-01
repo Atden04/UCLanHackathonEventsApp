@@ -1,26 +1,20 @@
 package com.atden04.uclan_events_app.user_interface;
 
 import com.atden04.uclan_events_app.models.Event;
-import com.atden04.uclan_events_app.models.EventParser;
+import com.atden04.uclan_events_app.models.modelParser;
 import com.atden04.uclan_events_app.models.User;
-import com.atden04.uclan_events_app.res.ResourceManager;
-import javafx.beans.InvalidationListener;
 import javafx.collections.FXCollections;
-import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
-import javafx.collections.ObservableListBase;
 
-import java.util.Collection;
-import java.util.Iterator;
-import java.util.List;
-import java.util.ListIterator;
+import java.util.Objects;
 
 public class Model {
     public Controller controller;
-    private EventParser parser;
+    private modelParser parser;
     private ObservableList<Event> events;
     private ObservableList<User> users;
     private User currentUser;
+    private boolean isUserLoggedIn;
 
     public Model()
     {
@@ -29,12 +23,13 @@ public class Model {
         this.users = FXCollections.observableArrayList();
     }
 
-    public void initialise(Controller controller, EventParser parser, User user) {
+    public void initialise(Controller controller, modelParser parser) {
+        this.isUserLoggedIn = false;
         this.controller = controller;
         this.parser = parser;
         this.parser.parseEvents("C:\\Users\\Alexa\\IdeaProjects\\UCLanHackathonEventsApp\\src\\com\\atden04\\uclan_events_app\\res\\events.csv", this.events);
         this.controller.createEventWindow(this.events);
-        this.currentUser = user;
+        this.parser.parseUsers("C:\\Users\\Alexa\\IdeaProjects\\UCLanHackathonEventsApp\\src\\com\\atden04\\uclan_events_app\\res\\users.csv", this.users);
     }
 
     public void registerEvent(Event event)
@@ -44,5 +39,40 @@ public class Model {
 
     public void unregisterEvent(Event event) {
         currentUser.unregisterEvent(event);
+    }
+
+    public boolean isUserLoggedIn() {
+        return isUserLoggedIn;
+    }
+
+    public String loginUser(String inputtedEmail, String inputtedPassword) {
+        String returnStr = new String("");
+        if (this.isEmailRegisterd(inputtedEmail)) {
+            for (User u: users) {
+                if (Objects.equals(u.getPassword(inputtedEmail), inputtedPassword)) {
+                    returnStr = "You are now logged in.";
+                    isUserLoggedIn = true;
+                    currentUser = u;
+                }
+            }
+            if (!isUserLoggedIn)
+            {
+                returnStr = "The password entered is incorrect.";
+            }
+        }
+        else {
+            returnStr = "The email entered does not belong to a registered user.";
+        }
+        return returnStr;
+    }
+
+    private boolean isEmailRegisterd(String email) {
+        boolean returnBool = false;
+        for (User u : users) {
+            if (Objects.equals(u.getEmail(), email)) {
+                returnBool = true;
+            }
+        }
+        return returnBool;
     }
 }

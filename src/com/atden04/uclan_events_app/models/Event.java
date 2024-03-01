@@ -5,12 +5,14 @@ import javafx.util.converter.LocalDateStringConverter;
 import java.time.LocalDate;
 
 public class Event {
+    private int id;
     private String name;
     private String imagePath;
     private LocalDate date;
 
-    public Event(String name, String image, LocalDate date)
+    public Event(int id, String name, String image, LocalDate date)
     {
+        this.id = id;
         this.name = name;
         this.imagePath = image;
         this.date = date;

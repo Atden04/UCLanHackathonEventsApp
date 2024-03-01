@@ -3,6 +3,8 @@ package com.atden04.uclan_events_app.models;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
+import java.util.Objects;
+
 public class User {
     private String name;
     private String email;
@@ -25,5 +27,17 @@ public class User {
 
     public void unregisterEvent(Event event) {
         registeredEvents.remove(event);
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getPassword(String email) {
+        String returnStr = new String("");
+        if (Objects.equals(email, this.email)) {
+            returnStr = this.password;
+        }
+        return returnStr;
     }
 }

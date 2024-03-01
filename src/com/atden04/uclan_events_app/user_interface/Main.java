@@ -1,6 +1,6 @@
 package com.atden04.uclan_events_app.user_interface;
 
-import com.atden04.uclan_events_app.models.EventParser;
+import com.atden04.uclan_events_app.models.modelParser;
 import com.atden04.uclan_events_app.models.User;
 import com.atden04.uclan_events_app.res.ResourceManager;
 import javafx.application.Application;
@@ -15,16 +15,14 @@ public class Main extends Application {
 
     Model model;
     Controller controller;
-    EventParser parser;
+    modelParser parser;
 
     @Override
     public void start(Stage stage) throws Exception {
-        //Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
 
-        this.parser = new EventParser();
+        this.parser = new modelParser();
         this.model = new Model();
         this.controller = new Controller();
-        User currentUser = new User("alex", "email", "word");
 
         FXMLLoader loader = new FXMLLoader(ResourceManager.getFxml("mainScene.fxml"));
         loader.setControllerFactory((Klass) -> this.controller);
@@ -34,17 +32,17 @@ public class Main extends Application {
         scene.getStylesheets().add(ResourceManager.getCss("style.css").toExternalForm());
 
         this.controller.initialise(this.model, stage);
-        this.model.initialise(this.controller,this.parser, currentUser);
+        this.model.initialise(this.controller,this.parser);
 
         stage.setTitle("UCLan Events");
         stage.setScene(scene);
         stage.show();
     }
 
-    /*@Override
+    @Override
     public void stop() {
         System.out.println("Closing the App..");
-    }*/
+    }
 
     public static void main(String[] args) {
         launch(args);

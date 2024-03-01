@@ -8,10 +8,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 
-public class EventParser {
+public class modelParser {
     /**
      * Parser from https://www.baeldung.com/java-csv-file-array
      * @param fileName
@@ -22,11 +20,25 @@ public class EventParser {
             String line;
             while ((line = br.readLine()) != null) {
                 String[] values = line.split(",");
-
+                int eventId = Integer.parseInt(values[0]);
                 LocalDateStringConverter converter = new LocalDateStringConverter();
-                LocalDate date = converter.fromString(values[2]);
+                LocalDate date = converter.fromString(values[3]);
 
-                events.addLast(new Event(values[0], values[1], date));
+                events.addLast(new Event(eventId, values[1], values[2], date));
+            }
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void parseUsers(String fileName, ObservableList<User> users) {
+        try (BufferedReader br = new BufferedReader(new FileReader(fileName))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                users.addLast(new User(values[0], values[1], values[2]));
             }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
