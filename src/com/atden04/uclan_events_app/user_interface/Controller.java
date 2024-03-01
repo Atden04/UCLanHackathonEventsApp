@@ -26,7 +26,8 @@ public class Controller {
     @FXML
     public MenuItem myReservationMenu;
     @FXML
-    public MenuItem SignOutMenu;
+    public MenuItem signOutMenu;
+    public Menu welcomeLabel;
     @FXML
     private VBox eventWindow;
     private ObservableList<CheckBox> checkBoxes;
@@ -41,6 +42,8 @@ public class Controller {
     public void initialise(Model model, Stage stage) {
         this.model = model;
         this.stage = stage;
+        this.signOutMenu.setVisible(false);
+        this.myReservationMenu.setVisible(false);
     }
 
     public void createEventWindow(ObservableList<Event> events) {
@@ -80,14 +83,15 @@ public class Controller {
                         }
                     } else {
                         registerBox.setSelected(false); //ensures CheckBox is not checked
-                        System.out.println("You can't register for the event as you're not logged in.");
+                        Alert alertToUser = new Alert(Alert.AlertType.WARNING);
+                        alertToUser.setContentText("You can't register for the event as you're not logged in.");
+                        alertToUser.show();
                     }
                 }
             });
             checkBoxes.addLast(registerBox);
 
             VBox eventInfoBox= new VBox(eventNameLabel, eventDateLabel, registerBox);
-            System.out.println(e.getDate().toString());
             eventContainer.getChildren().addAll(eventImage, eventInfoBox);
             eventWindow.getChildren().addLast(eventContainer);
         }
@@ -113,6 +117,12 @@ public class Controller {
                 String inputtedPassword = passwordInput.getText();
 
                 loginResultLabel.setText(model.loginUser(inputtedEmail, inputtedPassword));
+                if (model.isUserLoggedIn()) {
+                    loginMenu.setVisible(false);
+                    myReservationMenu.setVisible(true);
+                    signOutMenu.setVisible(true);
+                    welcomeLabel.setText("Welcome: " + model.getCurrentUser().getName());
+                }
             }
         });
 

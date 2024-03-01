@@ -43,28 +43,11 @@
           <items>
             <MenuItem fx:id="loginMenu" mnemonicParsing="false" onAction="#handleLogin" text="Login" />
             <MenuItem fx:id="myReservationMenu" mnemonicParsing="false" text="My Reservations" />
-            <MenuItem fx:id="SignOutMenu" mnemonicParsing="false" text="Sign Out" />
+            <MenuItem fx:id="signOutMenu" mnemonicParsing="false" text="Sign Out" />
           </items>
         </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
-          <items>
-            <MenuItem mnemonicParsing="false" text="Undo" />
-            <MenuItem mnemonicParsing="false" text="Redo" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Cut" />
-            <MenuItem mnemonicParsing="false" text="Copy" />
-            <MenuItem mnemonicParsing="false" text="Paste" />
-            <MenuItem mnemonicParsing="false" text="Delete" />
-            <SeparatorMenuItem mnemonicParsing="false" />
-            <MenuItem mnemonicParsing="false" text="Select All" />
-            <MenuItem mnemonicParsing="false" text="Unselect All" />
-          </items>
-        </Menu>
-        <Menu mnemonicParsing="false" text="Help">
-          <items>
-            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
-          </items>
-        </Menu>
+        <Menu fx:id="welcomeLabel" text="" />
+
       </menus>
     </MenuBar>
       <ScrollPane hbarPolicy="NEVER" prefHeight="793.0" prefWidth="425.0" vbarPolicy="ALWAYS">

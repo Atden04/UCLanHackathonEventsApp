@@ -29,6 +29,10 @@ public class User {
         registeredEvents.remove(event);
     }
 
+    public String getName() {
+        return this.name;
+    }
+
     public String getEmail() {
         return this.email;
     }

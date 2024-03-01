@@ -75,4 +75,8 @@ public class Model {
         }
         return returnBool;
     }
+
+    public User getCurrentUser() {
+        return this.currentUser;
+    }
 }
